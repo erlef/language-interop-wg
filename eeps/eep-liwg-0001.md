@@ -39,6 +39,12 @@ compilers in the project to access that information during compilation.
 
 The interface could be based on Elixir's  [Compilation tracers ](https://hexdocs.pm/elixir/Code.html#module-compilation-tracers)
 
+TODO
+====
+
+- [ ] Dependency Tracking across languages (a module that has to be recompiled after some data about dependencies is available)
+- [ ] mix <-> rebar3 interop
+
 Copyright
 =========
 
