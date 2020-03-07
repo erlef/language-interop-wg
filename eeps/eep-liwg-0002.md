@@ -86,10 +86,10 @@ See Also
 TODO
 ----
 
-[] Introduction of "well known" keys?
-[] Split between "system" values and "user" values?
-[] Have readonly values instead of system values?
-[] Define how equality works on values that are equal but have different metadata
+- [ ] Introduction of "well known" keys?
+- [ ] Split between "system" values and "user" values?
+- [ ] Have readonly values instead of system values?
+- [ ] Define how equality works on values that are equal but have different metadata
 
 Copyright
 =========
