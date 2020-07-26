@@ -205,6 +205,8 @@ quoting names in different cases.
 
 Runtime records's syntax in specs should be the same as a runtime record.
 
+TBD: `r_record()` matches any record type?
+
 ## Proposed Types
 
 The inclusion of common types made possible by the introduction of runtime
@@ -310,6 +312,20 @@ Then:
 ### Field Association
 
 * If `A` is an association `K := V`, then `Rep(A) = {r_record_field_exact, LINE, Rep(K), Rep(V)}`.
+
+## Erlang Type System
+
+A new type to the Erlang type system will be introduced, with the final name
+of this new type, for now let's call it `r_record`.
+
+### Sorting
+
+The position in the current order could follow the rationale used to include
+map in its current position:
+
+```
+number < atom < reference < fun < port < pid < tuple < map < nil < list < bit string
+```
 
 ## Language Support for Records/Union Types
 
