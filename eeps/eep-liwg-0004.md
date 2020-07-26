@@ -194,7 +194,7 @@ Becomes:
 ### Case Handling
 
 Different BEAM languages use different naming conventions, for example, Erlang
-uses `snake\_case`, Elixir uses `CamelCase` and LFE uses `lisp-case`, to avoid
+uses `snake_case`, Elixir uses `CamelCase` and LFE uses `lisp-case`, to avoid
 foreign syntax or identifier quoting when dealing with record names, variants
 and modules with different naming conventions, the new syntax should provide a
 way to specify the syntax transformation, compile them to a canonical
@@ -229,6 +229,80 @@ included in the standard library.
 
 TBD
 
+## Guards
+
+New guards should be introduced to check if a value is of the given type:
+
+```erl
+is_type(Module :: atom(), Type :: atom(), Value :: term())
+is_type(Module :: atom(), Type :: atom(), Variant :: atom(), Value :: term())
+```
+
+## Abstract Format
+
+[Abstract Format](https://erlang.org/doc/apps/erts/absform.html) additions:
+
+Note: r\_record -> runtime record
+
+In all cases:
+
+* `RMT`: Record Module Type: `{Module :: atom(), Type :: atom(), Variant :: atom()}`
+
+### Pattern
+
+If `P` is a r\_record pattern `#RMT{A_1, ..., A_k}` where:
+
+* Each `A_i` is an association `P_i_1 := P_i_2`
+
+Then:
+
+`Rep(P) = {r\_record, LINE, Repr(RMT), [Rep(A_1), ..., Rep(A_k)]}`
+
+Notice that every pattern has the same source form as some expression, and is
+represented in the same way as the corresponding expression.
+
+### Creation
+
+If `E` is a r\_record creation `#RMT{A_1, ..., A_k}` where:
+
+* Each `A_i` is an association `E_i_1 := E_i_2`
+
+Then:
+
+`Rep(E) = {r\_record, LINE, Repr(RMT), [Rep(A_1), ..., Rep(A_k)]}`
+
+### Update
+
+If `E` is a r\_record update `E_0#RMT{A_1, ..., A_k}` where:
+
+* Each `A_i` is an association `E_i_1 := E_i_2`
+
+Then:
+
+`Rep(E) = {r\_record, LINE, Repr(RMT), Rep(E_0),[Rep(A_1), ..., Rep(A_k)]}`
+
+### Guard Test
+
+If `Gt` is a r\_record creation `#RMT{A_1, ..., A_k}` where:
+
+* Each `A_i` is an association `Gt_i_1 := Gt_i_2`
+
+Then:
+
+`Rep(Gt) = {r\_record, LINE, Repr(RMT), [Rep(A_1), ..., Rep(A_k)]}`
+
+If `Gt` is a r\_record update `Gt_0#RMT{A_1, ..., A_k}` where:
+
+* Each `A_i` is an association `Gt_i_1 := Gt_i_2`
+
+Then:
+
+`Rep(Gt) = {r\_record, LINE, Repr(RMT), Rep(Gt_0),[Rep(A_1), ..., Rep(A_k)]}`
+
+### Field Association
+
+* If `A` is an association `K := V`, then `Rep(A) = {r\_record_field_exact, LINE, Rep(K), Rep(V)}`.
+
 ## Language Support for Records/Union Types
 
 ### Languages that compile record types to erlang records
@@ -242,9 +316,9 @@ TBD
 
 ### Languages that compile record types to erlang maps
 
-* Alpaca: `_\_struct_\_` field for records, no extra field for anonymous records
-* Clojerl: `_\_type_\_` field
-* Elixir: `_\_struct_\_` field for structs
+* Alpaca: `__struct__` field for records, no extra field for anonymous records
+* Clojerl: `__type__` field
+* Elixir: `__struct__` field for structs
 * Purerl: [No extra field](https://github.com/purescript/documentation/blob/master/language/Records.md#records)
 * Hamler : [No extra field](https://github.com/hamler-lang/documentation/blob/master/guides/09_DataTypesMapping.md#records-mapping)
 
