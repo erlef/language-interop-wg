@@ -229,6 +229,10 @@ included in the standard library.
 
 TBD
 
+## External Term Format
+
+TBD
+
 ## Guards
 
 New guards should be introduced to check if a value is of the given type:
