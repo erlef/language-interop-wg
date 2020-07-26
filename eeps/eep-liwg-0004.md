@@ -244,8 +244,8 @@ TBD
 New guards should be introduced to check if a value is of the given type:
 
 ```erl
-is_type(Module :: atom(), Type :: atom(), Value :: term())
-is_type(Module :: atom(), Type :: atom(), Variant :: atom(), Value :: term())
+is_r_record(Module :: atom(), Type :: atom(), Value :: term())
+is_r_record(Module :: atom(), Type :: atom(), Variant :: atom(), Value :: term())
 ```
 
 ## Abstract Format
