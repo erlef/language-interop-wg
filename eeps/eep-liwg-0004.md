@@ -239,6 +239,23 @@ TBD
 
 * Like map's external term format but with extra fields for module, type, variant (and version if supported)?
 
+## Utility Functions
+
+There should be a module to do operations on records:
+
+```erl
+module(Value :: term()) -> atom()
+type(Value :: term()) -> atom()
+variant(Value :: term()) -> atom()
+to_map(Value :: term()) -> map(atom(), term())
+
+% same as {module(Value), type(Value), variant(Value)}
+full_type(Value :: term()) -> {atom(), atom(), atom()}
+
+% if version is supported
+version(Value :: term()) -> version()
+```
+
 ## Guards
 
 New guards should be introduced to check if a value is of the given type:
@@ -247,6 +264,7 @@ New guards should be introduced to check if a value is of the given type:
 is_r_record(Module :: atom(), Type :: atom(), Value :: term())
 is_r_record(Module :: atom(), Type :: atom(), Variant :: atom(), Value :: term())
 ```
+
 
 ## Abstract Format
 
