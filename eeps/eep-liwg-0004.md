@@ -256,7 +256,7 @@ If `P` is a r\_record pattern `#RMT{A_1, ..., A_k}` where:
 
 Then:
 
-`Rep(P) = {r\_record, LINE, Repr(RMT), [Rep(A_1), ..., Rep(A_k)]}`
+`Rep(P) = {r_record, LINE, Repr(RMT), [Rep(A_1), ..., Rep(A_k)]}`
 
 Notice that every pattern has the same source form as some expression, and is
 represented in the same way as the corresponding expression.
@@ -269,7 +269,7 @@ If `E` is a r\_record creation `#RMT{A_1, ..., A_k}` where:
 
 Then:
 
-`Rep(E) = {r\_record, LINE, Repr(RMT), [Rep(A_1), ..., Rep(A_k)]}`
+`Rep(E) = {r_record, LINE, Repr(RMT), [Rep(A_1), ..., Rep(A_k)]}`
 
 ### Update
 
@@ -279,7 +279,7 @@ If `E` is a r\_record update `E_0#RMT{A_1, ..., A_k}` where:
 
 Then:
 
-`Rep(E) = {r\_record, LINE, Repr(RMT), Rep(E_0),[Rep(A_1), ..., Rep(A_k)]}`
+`Rep(E) = {r_record, LINE, Repr(RMT), Rep(E_0),[Rep(A_1), ..., Rep(A_k)]}`
 
 ### Guard Test
 
@@ -289,7 +289,7 @@ If `Gt` is a r\_record creation `#RMT{A_1, ..., A_k}` where:
 
 Then:
 
-`Rep(Gt) = {r\_record, LINE, Repr(RMT), [Rep(A_1), ..., Rep(A_k)]}`
+`Rep(Gt) = {r_record, LINE, Repr(RMT), [Rep(A_1), ..., Rep(A_k)]}`
 
 If `Gt` is a r\_record update `Gt_0#RMT{A_1, ..., A_k}` where:
 
@@ -297,11 +297,11 @@ If `Gt` is a r\_record update `Gt_0#RMT{A_1, ..., A_k}` where:
 
 Then:
 
-`Rep(Gt) = {r\_record, LINE, Repr(RMT), Rep(Gt_0),[Rep(A_1), ..., Rep(A_k)]}`
+`Rep(Gt) = {r_record, LINE, Repr(RMT), Rep(Gt_0),[Rep(A_1), ..., Rep(A_k)]}`
 
 ### Field Association
 
-* If `A` is an association `K := V`, then `Rep(A) = {r\_record_field_exact, LINE, Rep(K), Rep(V)}`.
+* If `A` is an association `K := V`, then `Rep(A) = {r_record_field_exact, LINE, Rep(K), Rep(V)}`.
 
 ## Language Support for Records/Union Types
 
