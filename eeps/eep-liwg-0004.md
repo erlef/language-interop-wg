@@ -229,9 +229,13 @@ included in the standard library.
 
 TBD
 
+* An extra internal version field with a hash of a canonicalized representation of the declaration?
+
 ## External Term Format
 
 TBD
+
+* Like map's external term format but with extra fields for module, type, variant (and version if supported)?
 
 ## Guards
 
